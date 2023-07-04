@@ -3,9 +3,9 @@ let bloco = document.getElementById("block");
 let jogo = document.getElementsByTagName("BODY")[0];
 let inicioBtn = document.getElementById("inicio");
 
-let comeco = new Audio('/assets/audio/comeco.mp3');
-let fim = new Audio('/assets/audio/fim.mp3');
-let trilha = new Audio('/assets/audio/trilha.mp3');
+let comeco = new Audio('./assets/audio/comeco.mp3');
+let fim = new Audio('./assets/audio/fim.mp3');
+let trilha = new Audio('./assets/audio/trilha.mp3');
 
 document.addEventListener("keydown", e => {
   if(e.key==="ArrowLeft"){moveLeft();}
