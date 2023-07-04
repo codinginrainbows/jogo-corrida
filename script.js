@@ -1,5 +1,5 @@
-let character = document.getElementById("character");
-let block = document.getElementById("block");
+let carro = document.getElementById("character");
+let bloco = document.getElementById("block");
 let jogo = document.getElementsByTagName("BODY")[0];
 let inicioBtn = document.getElementById("inicio");
 
@@ -24,44 +24,44 @@ function restartJogo() {
 }
 
 function moveLeft(){
-    let left = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
+    let left = parseInt(window.getComputedStyle(carro).getPropertyValue("left"));
     left -= 100;
     if(left>=0){
-        character.style.left = left + "px";
+        carro.style.left = left + "px";
     }
 }
 
 function moveRight(){
-    let left = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
+    let left = parseInt(window.getComputedStyle(carro).getPropertyValue("left"));
     left += 100;
     if(left<300){
-        character.style.left = left + "px";
+        carro.style.left = left + "px";
     }
 }
 
 
 let counter = 0;
-block.addEventListener('animationiteration', () => {
+bloco.addEventListener('animationiteration', () => {
     let random = Math.floor(Math.random() * 3);
     left = random * 100;
-    block.style.left = left + "px";
+    bloco.style.left = left + "px";
     counter++;
 });
 
 function inicio() {
-    block.style.animation = "slide 1s infinite linear";
+    bloco.style.animation = "slide 1s infinite linear";
     inicioBtn.remove();
     trilha.play();
     trilha.loop = true;
     
     return setInterval(() => {
-        let characterLeft = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
-        let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
-        let blockTop = parseInt(window.getComputedStyle(block).getPropertyValue("top"));
+        let carroLeft = parseInt(window.getComputedStyle(carro).getPropertyValue("left"));
+        let blocoLeft = parseInt(window.getComputedStyle(bloco).getPropertyValue("left"));
+        let blocoTop = parseInt(window.getComputedStyle(bloco).getPropertyValue("top"));
         
-        if(characterLeft==blockLeft && blockTop<500 && blockTop>300){
+        if(carroLeft==blocoLeft && blocoTop<500 && blocoTop>300){
             jogo.innerHTML = `<div id='game-over-container'><h1 id='gameover-title'>PONTUAÇÃO: ${counter}</h1><button class='jogar-novamente' id='jogar-novamente' onClick={restartJogo()}>Jogar novamente</button></div>` 
-            block.style.animation = "none";
+            bloco.style.animation = "none";
             fim.play();
             trilha.pause();
         }
